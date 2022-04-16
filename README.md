@@ -35,7 +35,6 @@
 ### Association
 
 - belongs_to :user
-- has_many :images
 - belongs_to :category
 - belongs_to :condition
 - belongs_to :shipping_charge
