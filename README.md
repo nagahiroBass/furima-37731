@@ -45,11 +45,10 @@
 
 ## orders テーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| item_id    | references | null: false, foreign_key: true |
-| user_id    | references | null: false, foreign_key: true |
-| address_id | references | null: false, foreign_key: true |
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| item_id | references | null: false, foreign_key: true |
+| user_id | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -73,14 +72,3 @@
 
 - belongs_to :prefecture
 - belongs_to :order
-
-## images テーブル
-
-| Column  | Type       | Options                       |
-| ------- | ---------- | ----------------------------- |
-| image   | string     | null: false                   |
-| item_id | references | null: false, foregn_key: true |
-
-### Association
-
-- belongs_to :item
