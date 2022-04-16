@@ -24,14 +24,13 @@
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | null: false                    |
 | explanation        | text       | null: false                    |
-| category_id        | references | null: false, foreign_key: true |
-| condition_id       | references | null: false, foreign_key: true |
-| shipping_charge_id | references | null: false, foreign_key: true |
-| prefecture_id      | references | null: false, foreign_key: true |
-| days_to_ship_id    | references | null: false, foreign_key: true |
+| category_id        | integer    | null: false                    |
+| condition_id       | integer    | null: false                    |
+| shipping_charge_id | integer    | null: false                    |
+| prefecture_id      | integer    | null: false                    |
+| days_to_ship_id    | integer    | null: false                    |
 | price              | integer    | null: false                    |
-| user_id            | references | null: false, foreign_key: true |
-| order_id           | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
 
