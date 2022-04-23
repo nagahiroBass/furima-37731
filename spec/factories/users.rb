@@ -6,8 +6,8 @@ FactoryBot.define do
     nickname              {Faker::Name.initials(number: 2)}
     firstname             {'田中'}
     lastname              {'太郎'}
-    firstname_read        {'tanaka'}
-    lastname_read         {'tarou'}
-    birthday              {'2000,01,01'}
+    firstname_read        {'タナカ'}
+    lastname_read         {'タロウ'}
+    birthday              {'20000101'}
   end
 end
