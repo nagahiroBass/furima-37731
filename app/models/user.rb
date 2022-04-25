@@ -4,9 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  validates :nickname,        presence: true
-
-  validates :birthday,        presence: true
+  validates :nickname, presence: true
+  validates :birthday, presence: true
 
   with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'should be double-byte character' } do
     validates :firstname
