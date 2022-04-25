@@ -96,7 +96,7 @@ RSpec.describe User, type: :model do
           @user.valid?
           expect(@user.errors.full_messages).to include("Firstname read should be double-byte kana")
         end
-        it 'lastname_read should ne double-byte kana' do
+        it 'lastname_read should be double-byte kana' do
           @user.lastname_read = "ﾃｽﾄｶﾅ"
           @user.valid?
           expect(@user.errors.full_messages).to include("Lastname read should be double-byte kana")
