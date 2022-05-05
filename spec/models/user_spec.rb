@@ -52,19 +52,19 @@ RSpec.describe User, type: :model do
           @user.password = "testpass"
           @user.password_confirmation = @user.password
           @user.valid?
-          expect(@user.errors.full_messages).to include("Password must include both alphabetic and numeric characters")
+          expect(@user.errors.full_messages).to include("Password must include both alphabetic and numeric characters, without double-byte characters")
         end
         it 'password only numbers should not be present' do
           @user.password = "123456"
           @user.password_confirmation = @user.password
           @user.valid?
-          expect(@user.errors.full_messages).to include("Password must include both alphabetic and numeric characters")
+          expect(@user.errors.full_messages).to include("Password must include both alphabetic and numeric characters, without double-byte characters")
         end
         it 'password must not contain double-byte characters' do
           @user.password = "テストパスワード"
           @user.password_confirmation = @user.password
           @user.valid?
-          expect(@user.errors.full_messages).to include("Password must include both alphabetic and numeric characters")
+          expect(@user.errors.full_messages).to include("Password must include both alphabetic and numeric characters, without double-byte characters")
         end
         it 'password should be same to password_confirmation' do
           @user.password_confirmation = "testpass1"
