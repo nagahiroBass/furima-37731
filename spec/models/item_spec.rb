@@ -40,6 +40,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Shipping fee can't be blank")
       end
 
+      it 'prefecture should not be blank' do
+        @item.prefecture_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+      end
+
       it 'days to ship should not be blank' do
         @item.days_to_ship_id = 1
         @item.valid?
