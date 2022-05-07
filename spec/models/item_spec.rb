@@ -34,10 +34,10 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
 
-      it 'shipping charge should not be blank' do
-        @item.shipping_charge_id = 1
+      it 'shipping fee should not be blank' do
+        @item.shipping_fee_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping charge can't be blank")
+        expect(@item.errors.full_messages).to include("Shipping fee can't be blank")
       end
 
       it 'days to ship should not be blank' do
