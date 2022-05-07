@@ -29,12 +29,12 @@ RSpec.describe User, type: :model do
           another_user = FactoryBot.build(:user)
           another_user.email = @user.email
           another_user.valid?
-          expect(another_user.errors.full_messages).to include("Email has already been taken")
+          expect(another_user.errors.full_messages).to include('Email has already been taken')
         end
         it 'email should have @' do
           @user.email = 'test.com'
           @user.valid?
-          expect(@user.errors.full_messages).to include("Email is invalid")
+          expect(@user.errors.full_messages).to include('Email is invalid')
         end
         it 'password should be present' do
           @user.password = ''
@@ -46,28 +46,28 @@ RSpec.describe User, type: :model do
           @user.password = 'test1'
           @user.password_confirmation = @user.password
           @user.valid?
-          expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+          expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
         end
         it 'password should be a mixture of singlebyte alphanumeric characters' do
-          @user.password = "testpass"
+          @user.password = 'testpass'
           @user.password_confirmation = @user.password
           @user.valid?
-          expect(@user.errors.full_messages).to include("Password must include both alphabetic and numeric characters, without double-byte characters")
+          expect(@user.errors.full_messages).to include('Password must include both alphabetic and numeric characters, without double-byte characters')
         end
         it 'password only numbers should not be present' do
-          @user.password = "123456"
+          @user.password = '123456'
           @user.password_confirmation = @user.password
           @user.valid?
-          expect(@user.errors.full_messages).to include("Password must include both alphabetic and numeric characters, without double-byte characters")
+          expect(@user.errors.full_messages).to include('Password must include both alphabetic and numeric characters, without double-byte characters')
         end
         it 'password must not contain double-byte characters' do
-          @user.password = "テストパスワード"
+          @user.password = 'テストパスワード'
           @user.password_confirmation = @user.password
           @user.valid?
-          expect(@user.errors.full_messages).to include("Password must include both alphabetic and numeric characters, without double-byte characters")
+          expect(@user.errors.full_messages).to include('Password must include both alphabetic and numeric characters, without double-byte characters')
         end
         it 'password should be same to password_confirmation' do
-          @user.password_confirmation = "testpass1"
+          @user.password_confirmation = 'testpass1'
           @user.valid?
           expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
         end
@@ -96,22 +96,22 @@ RSpec.describe User, type: :model do
         it 'firstname should be double-byte character' do
           @user.firstname = 'testname'
           @user.valid?
-          expect(@user.errors.full_messages).to include("Firstname should be double-byte character")
+          expect(@user.errors.full_messages).to include('Firstname should be double-byte character')
         end
         it 'lastname should be double-byte character' do
           @user.lastname = 'testname'
           @user.valid?
-          expect(@user.errors.full_messages).to include("Lastname should be double-byte character")
+          expect(@user.errors.full_messages).to include('Lastname should be double-byte character')
         end
         it 'firstname_read should be double-byte kana' do
           @user.firstname_read = 'ﾃｽﾄｶﾅ'
           @user.valid?
-          expect(@user.errors.full_messages).to include("Firstname read should be double-byte kana")
+          expect(@user.errors.full_messages).to include('Firstname read should be double-byte kana')
         end
         it 'lastname_read should be double-byte kana' do
-          @user.lastname_read = "ﾃｽﾄｶﾅ"
+          @user.lastname_read = 'ﾃｽﾄｶﾅ'
           @user.valid?
-          expect(@user.errors.full_messages).to include("Lastname read should be double-byte kana")
+          expect(@user.errors.full_messages).to include('Lastname read should be double-byte kana')
         end
         it 'birthday should be presesnt' do
           @user.birthday = nil
@@ -119,8 +119,6 @@ RSpec.describe User, type: :model do
           expect(@user.errors.full_messages).to include("Birthday can't be blank")
         end
       end
-
     end
   end
 end
-
