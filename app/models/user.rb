@@ -22,4 +22,5 @@ class User < ApplicationRecord
                                  message: 'must include both alphabetic and numeric characters, without double-byte characters'
 
   has_many :items
+  has_many :orders
 end
