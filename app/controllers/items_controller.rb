@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_correct_user, only: [:edit, :destroy]
+  before_action :ensure_correct_user, only: [:edit, :destroy, :update]
+  before_action :ensure_nowonsale_item, only: [:edit, :update, :destroy]
 
   def index
     @items = Item.order(id: 'DESC')
@@ -52,5 +53,9 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :explanation, :image, :category_id, :condition_id, :shipping_fee_id, :prefecture_id,
                                  :days_to_ship_id, :price, :user_id).merge(user_id: current_user.id)
+  end
+
+  def ensure_nowonsale_item
+    redirect_to root_path unless @item.order.nil?
   end
 end
