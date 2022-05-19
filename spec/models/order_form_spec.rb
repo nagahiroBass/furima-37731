@@ -29,7 +29,7 @@ RSpec.describe OrderForm, type: :model do
     it 'postal code sholud be single byte numeric number with -' do
       @order_form.postal_code = '1234567'
       @order_form.valid?
-      expect(@order_form.errors.full_messages).to include("Postal code はハイフンを入れて7桁の半角文字列で入力してください")
+      expect(@order_form.errors.full_messages).to include('Postal code はハイフンを入れて7桁の半角文字列で入力してください')
     end
 
     it 'prefecture should be present' do
@@ -49,7 +49,7 @@ RSpec.describe OrderForm, type: :model do
       @order_form.valid?
       expect(@order_form.errors.full_messages).to include("House number can't be blank")
     end
-    
+
     it 'phone number should be present' do
       @order_form.phone_number = ''
       @order_form.valid?
@@ -59,31 +59,31 @@ RSpec.describe OrderForm, type: :model do
     it 'phone number should be 10 characters or more' do
       @order_form.phone_number = '123456789'
       @order_form.valid?
-      expect(@order_form.errors.full_messages).to include("Phone number はハイフン無し、10〰11桁の半角数字で入力してください")
+      expect(@order_form.errors.full_messages).to include('Phone number はハイフン無し、10〰11桁の半角数字で入力してください')
     end
 
     it 'phone number should be 11 characters or less' do
       @order_form.phone_number = '123456789012'
       @order_form.valid?
-      expect(@order_form.errors.full_messages).to include("Phone number はハイフン無し、10〰11桁の半角数字で入力してください")
+      expect(@order_form.errors.full_messages).to include('Phone number はハイフン無し、10〰11桁の半角数字で入力してください')
     end
 
     it 'phone number should be singbe byte numeric characters without -' do
       @order_form.phone_number = '090-1234-5678'
       @order_form.valid?
-      expect(@order_form.errors.full_messages).to include("Phone number はハイフン無し、10〰11桁の半角数字で入力してください")
+      expect(@order_form.errors.full_messages).to include('Phone number はハイフン無し、10〰11桁の半角数字で入力してください')
     end
 
     it 'phone number should not be double byte characters' do
       @order_form.phone_number = '０９０１２３４５６７８'
       @order_form.valid?
-      expect(@order_form.errors.full_messages).to include("Phone number はハイフン無し、10〰11桁の半角数字で入力してください")
+      expect(@order_form.errors.full_messages).to include('Phone number はハイフン無し、10〰11桁の半角数字で入力してください')
     end
 
     it 'phone number should be only singbe byte numeric characters without alphabet' do
       @order_form.phone_number = '090asdfghjk'
       @order_form.valid?
-      expect(@order_form.errors.full_messages).to include("Phone number はハイフン無し、10〰11桁の半角数字で入力してください")
+      expect(@order_form.errors.full_messages).to include('Phone number はハイフン無し、10〰11桁の半角数字で入力してください')
     end
 
     it 'token should be present' do
