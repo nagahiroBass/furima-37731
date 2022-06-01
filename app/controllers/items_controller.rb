@@ -26,10 +26,15 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    item_attributes = @item.attributes
+    @item_form = ItemForm.new(item_attributes)
   end
 
   def update
-    if @item.update(item_params)
+    @item_form = ItemForm.new(item_form_params)
+    @item_form.image ||= @item.image.blob
+    if @item_form.valid?
+      @item_form.update(item_form_params, @item)
       redirect_to item_path
     else
       render :edit
@@ -53,7 +58,7 @@ class ItemsController < ApplicationController
 
   def item_form_params
     params.require(:item_form).permit(:name, :explanation, :image, :category_id, :condition_id, :shipping_fee_id, :prefecture_id,
-                                 :days_to_ship_id, :price, :user_id).merge(user_id: current_user.id)
+                                      :days_to_ship_id, :price, :user_id).merge(user_id: current_user.id)
   end
 
   def ensure_nowonsale_item
