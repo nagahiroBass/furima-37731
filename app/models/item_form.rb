@@ -1,7 +1,7 @@
 class ItemForm
   include ActiveModel::Model
 
-  attr_accessor :name, :explanation, :category_id, :condition_id, :shipping_fee_id, :prefecture_id, :days_to_ship_id, :price, :user_id
+  attr_accessor :name, :explanation, :category_id, :condition_id, :shipping_fee_id, :prefecture_id, :days_to_ship_id, :price, :user_id, :image
 
   validates :name, :explanation, :image, presence: true
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
@@ -9,6 +9,6 @@ class ItemForm
             numericality: { other_than: 1, message: "can't be blank" }
 
   def save
-    Item.create(name: name, explanation: explanation, category_id: category_id, condition_id: condition_id, shipping_fee_id: shipping_fee_id, prefecture_id: prefecture_id, days_to_ship_id: days_to_ship_id, price: price, user_id: user_id)
+    Item.create(name: name, explanation: explanation, category_id: category_id, condition_id: condition_id, shipping_fee_id: shipping_fee_id, prefecture_id: prefecture_id, days_to_ship_id: days_to_ship_id, price: price, user_id: user_id, image: image)
   end
 end
