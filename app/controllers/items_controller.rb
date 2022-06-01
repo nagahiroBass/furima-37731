@@ -57,8 +57,8 @@ class ItemsController < ApplicationController
   end
 
   def item_form_params
-    params.require(:item_form).permit(:name, :explanation, :image, :category_id, :condition_id, :shipping_fee_id, :prefecture_id,
-                                      :days_to_ship_id, :price, :user_id).merge(user_id: current_user.id)
+    params.require(:item_form).permit(:name, :explanation, :category_id, :condition_id, :shipping_fee_id, :prefecture_id,
+                                      :days_to_ship_id, :price, :user_id, :tag_name, :image).merge(user_id: current_user.id)
   end
 
   def ensure_nowonsale_item
