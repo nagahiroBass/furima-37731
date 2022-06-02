@@ -24,11 +24,13 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item_tags = @item.tags
   end
 
   def edit
     item_attributes = @item.attributes
     @item_form = ItemForm.new(item_attributes)
+    @tag_list=@item.tags.pluck(:tag_name).join(',')
   end
 
   def update

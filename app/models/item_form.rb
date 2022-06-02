@@ -18,7 +18,7 @@ class ItemForm
 
   def update(params, item, sent_tags)
     item.item_tag_relations.destroy_all
-    tag_name = params.delete(:tag_name)
+    params.delete(:tag_name)
     item.update(params)
     tag_save(sent_tags, item)
   end

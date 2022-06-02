@@ -31,9 +31,8 @@
     <div class="tag_field">
       <div class="weight-bold-text">
         タグ付け
-        <%# <span class="indispensable">必須</span> %>
       </div>
-      <%= f.text_area :tag_name, class:"items-text", id:"item-tag", placeholder:"商品を見つかりやすくするため、タグをつけてみましょう" ,rows:"2" ,maxlength:"1000" %>
+      <%= f.text_area :tag_name, value: @tag_list, class:"items-text", id:"item-tag", placeholder:"商品を見つかりやすくするため、タグをつけてみましょう" ,rows:"2" ,maxlength:"1000" %>
     </div>
   </div>
   <%# /商品名と商品説明 %>
