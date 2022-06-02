@@ -15,7 +15,8 @@ class ItemsController < ApplicationController
   def create
     @item_form = ItemForm.new(item_form_params)
     if @item_form.valid?
-      @item_form.save
+      tag_list = set_tag_list
+      @item_form.save(tag_list)
       redirect_to root_path
     else
       render :new
@@ -23,18 +24,21 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item_tags = @item.tags
   end
 
   def edit
     item_attributes = @item.attributes
     @item_form = ItemForm.new(item_attributes)
+    @tag_list=@item.tags.pluck(:tag_name).join(',')
   end
 
   def update
     @item_form = ItemForm.new(item_form_params)
     @item_form.image ||= @item.image.blob
     if @item_form.valid?
-      @item_form.update(item_form_params, @item)
+      tag_list = set_tag_list
+      @item_form.update(item_form_params, @item, tag_list)
       redirect_to item_path
     else
       render :edit
@@ -63,5 +67,9 @@ class ItemsController < ApplicationController
 
   def ensure_nowonsale_item
     redirect_to root_path unless @item.order.nil?
+  end
+
+  def set_tag_list
+    params[:item_form][:tag_name].split(',')
   end
 end
