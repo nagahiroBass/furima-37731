@@ -20,31 +20,6 @@ class ItemForm
     end
   end
 
-  def save_tag(sent_tags)
-    sent_tags.each do |tag_name|
-      tag = Tag.where(tag_name: tag_name).first_or_initialize
-      tag.save
-      ItemTagRelation.create(item_id: item.id, tag_id: tag.id)
-    end
-    # current_tags = Tag.pluck(:tag_name) unless self.tag_name.nil?
-    # old_tags = current_tags - sent_tags
-    # new_tags = sent_tags - current_tags
-
-    # old_tags.each do |old_tag|
-    #   self.tags.delete Tag.find_by(name: old)
-    # end
-
-    # new_tags.each do |new|
-    #   new_post_tag = Tag.find_or_create_by(name: new)
-    #   self.tags << new_post_tag
-    # end
-
-
-    # tag = Tag.where(tag_name: tag_name).first_or_initialize
-    # tag.save
-    # ItemTagRelation.create(item_id: item.id, tag_id: tag.id)
-  end
-
   def update(params, item)
     item.item_tag_relations.destroy_all
     tag_name = params.delete(:tag_name)
